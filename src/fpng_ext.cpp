@@ -1,6 +1,5 @@
 #include <nanobind/nanobind.h>
 #include <nanobind/ndarray.h>
-// #include <nanobind/stl/vector.h>
 
 #include <fpng.h>
 
@@ -14,8 +13,8 @@ using namespace fpng;
 
 nb::bytes cfpng_encode_ndarray(
         ndarray<const uint8_t, nb::ndim<3>, nb::c_contig, nb::device::cpu> img) {
-    const uint32_t w = img.shape(0);
-    const uint32_t h = img.shape(1);
+    const uint32_t h = img.shape(0);
+    const uint32_t w = img.shape(1);
     const uint32_t num_chans = img.shape(2);
 	// bool fpng_encode_image_to_memory(const void* pImage, uint32_t w, uint32_t h, uint32_t num_chans, std::vector<uint8_t>& out_buf, uint32_t flags = 0);
 
@@ -30,9 +29,6 @@ nb::bytes cfpng_encode_ndarray(
 
 
 NB_MODULE(fpng_ext, m) {
-    m.doc() = "This is a \"hello world\" example with nanobind";
-    m.def("add", [](int a, int b) { return a + b; }, "a"_a, "b"_a);
-
     m.def("init", &fpng_init);
     m.def("cpu_supports_sse41", &fpng_cpu_supports_sse41);
     // m.def("crc32", );

@@ -40,6 +40,9 @@ jobs:
         submodules: true
 
     - uses: pypa/cibuildwheel@v2.21
+      env:
+        # Skip builds(save time / avoid build error)
+        CIBW_SKIP: "pp* *-musllinux_* *_i686 *-win32"
 
     - name: Verify clean directory
       run: git diff --exit-code

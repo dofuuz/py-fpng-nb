@@ -15,7 +15,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "numpy"]
+test = ["pytest", "numpy", "Pillow"]
 
 [project.urls]
 Homepage = "https://github.com/dofuuz/py-fpng-nb"
