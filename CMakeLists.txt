@@ -62,6 +62,7 @@ endif()
 
 message("${CMAKE_CXX_FLAGS}")
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_library(fpng STATIC
   fpng/src/fpng.cpp
 )
