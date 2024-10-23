@@ -1,7 +1,6 @@
 from typing import IO
 
-import numpy as np
-from PIL import Image, ImageFile
+from PIL import Image
 from . import fpng_ext
 
 
@@ -10,22 +9,16 @@ fpng_ext.init()
 
 def _save(im: Image.Image, fp: IO[bytes], filename) -> None:
     if im.mode == "RGB":
-        rawmode = "RGB"
-        bpp = 8
-
+        num_chan = 3
     elif im.mode == "RGBA":
-        rawmode = "RGBA"
-        bpp = 8
-
+        num_chan = 4
     else:
-        msg = f"cannot write mode {im.mode} as FPNG"
-        raise OSError(msg)
+        raise OSError(f"cannot write mode {im.mode} as FPNG")
 
     # make sure image data is available
     im.load()
 
-    # TODO: make work without numpy
-    png = fpng_ext.encode_ndarray(np.array(im))
+    png = fpng_ext.encode_image_to_memory(im.tobytes(), im.width, im.height, num_chan)
     fp.write(png)
 
     if hasattr(fp, "flush"):
