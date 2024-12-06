@@ -12,6 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         submodules: true
 
     - name: Build SDist
@@ -37,6 +38,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         submodules: true
 
     - uses: pypa/cibuildwheel@v2.21
@@ -53,6 +55,34 @@ jobs:
       with:
         path: wheelhouse/*.whl
         name: dist-${{ matrix.os }}
+
+  build_archs:
+    name: Wheels for manylinux_aarch64
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        submodules: true
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: all
+
+    - name: Build wheels
+      uses: pypa/cibuildwheel@v2.21
+      env:
+        CIBW_ARCHS_LINUX: aarch64
+        CIBW_BUILD: cp*-manylinux_aarch64
+        CIBW_TEST_SKIP: "*"  # Skip tests(save time)
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: dist-archs
+        path: ./wheelhouse/*.whl
+
 
   merge_wheels:
     name: Merge wheels into a combined artifact
