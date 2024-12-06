@@ -44,7 +44,7 @@ jobs:
     - uses: pypa/cibuildwheel@v2.21
       env:
         # Skip builds(save time / avoid build error)
-        CIBW_SKIP: "cp38 pp* *-musllinux_* *_i686 *-win32"
+        CIBW_SKIP: "cp38-* pp* *-musllinux_* *_i686 *-win32"
 
     - name: Verify clean directory
       run: git diff --exit-code
@@ -76,6 +76,7 @@ jobs:
       env:
         CIBW_ARCHS_LINUX: aarch64
         CIBW_BUILD: cp*-manylinux_aarch64
+        CIBW_SKIP: "cp38-*"
         CIBW_TEST_SKIP: "*"  # Skip tests(save time)
 
     - uses: actions/upload-artifact@v4
