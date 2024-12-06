@@ -4,13 +4,14 @@ import timeit
 
 from PIL import Image
 
-import fpng.pil
+import fpng
 
 
 REPEAT = 10
 
 
 img = Image.open('fpng/example.png')
+img.load()
 
 
 fp = open(os.devnull, "wb")
@@ -29,5 +30,5 @@ t = timeit.timeit(lambda: img.save('pil_fpng.png', format='fpng'), number=REPEAT
 print(f'write fpng: {t:f} (sec)')
 
 
-print(f'PNG size {osp.getsize("pil_png.png")} bytes')
-print(f'fpng size {osp.getsize("pil_fpng.png")} bytes')
+print(f'PNG size {osp.getsize("pil_png.png"):,} bytes')
+print(f'fpng size {osp.getsize("pil_fpng.png"):,} bytes')

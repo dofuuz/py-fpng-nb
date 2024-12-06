@@ -1,3 +1,14 @@
+/*
+py-fpng-nb
+https://github.com/dofuuz/py-fpng-nb
+
+SPDX-FileCopyrightText: (c) 2024 KEUM Myungchul
+SPDX-License-Identifier: MIT
+
+Fast PNG writer for Python.
+py-fpng-nb is a Python wrapper of fpng(https://github.com/richgel999/fpng).
+*/
+
 #include <nanobind/nanobind.h>
 #include <nanobind/ndarray.h>
 
