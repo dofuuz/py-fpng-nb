@@ -23,7 +23,8 @@ If installation fails, upgrade pip with `python -m pip install --upgrade pip` an
 import fpng
 from PIL import Image
 
-# ... process image ...
+# ...
+
 img.save('file_path.png', 'FPNG')
 ```
 
@@ -36,9 +37,9 @@ Must have 3 dimensions [height, width, channels] with RGB or RGBA format.
 ```python
 import fpng
 
-# ... process image ...
+# ...
 
-png_bytes = fpng.from_ndarray(img)
+png_bytes = fpng.from_ndarray(img_ndarray)
 
 with open('file_path.png', 'wb') as f:
     f.write(png_bytes)
@@ -51,8 +52,9 @@ with open('file_path.png', 'wb') as f:
 import cv2
 import fpng
 
-img = cv2.imread(EXAMPLE_PNG)
-png_bytes = fpng.from_cv2(img)
+# ...
+
+png_bytes = fpng.from_cv2(img_mat)
 
 with open('file_path.png', 'wb') as f:
     f.write(png_bytes)
