@@ -1,8 +1,8 @@
 import os.path as osp
 
 import fpng
-import fpng.pil
 
+import cv2
 import numpy as np
 from PIL import Image
 
@@ -12,9 +12,9 @@ EXAMPLE_PNG = osp.join(osp.dirname(__file__), '../fpng/example.png')
 
 def test_ndarray():
     img = Image.open(EXAMPLE_PNG)
-    png = fpng.fpng_ext.encode_ndarray(np.asarray(img))
+    png = fpng.from_ndarray(np.asarray(img))
 
-    with open('out.png', 'wb') as outf:
+    with open('np.png', 'wb') as outf:
         outf.write(png)
 
 
@@ -37,6 +37,14 @@ def test_tofile():
     ret = fpng.fpng_ext.encode_image_to_file('tofile.png', img.tobytes(), img.width, img.height, num_chan, 0)
 
     assert ret
+
+
+def test_cv2():
+    img = cv2.imread(EXAMPLE_PNG)
+    png = fpng.from_cv2(img)
+
+    with open('cv2.png', 'wb') as outf:
+        outf.write(png)
 
 
 if __name__ == "__main__":

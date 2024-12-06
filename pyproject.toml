@@ -5,17 +5,27 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "fpng"
 version = "0.0.1"
-description = ""
+description = "Very fast .PNG image writer for 24/32bpp images for Python"
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
     { name = "KEUM Myungchul" },
 ]
 classifiers = [
+    "Development Status :: 3 - Alpha",
+
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+
+    "License :: OSI Approved :: MIT License",
+
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
 ]
+dependencies = ["lazy_loader"]
 
 [project.optional-dependencies]
-test = ["pytest", "numpy", "Pillow"]
+test = ["pytest", "opencv_python", "numpy", "Pillow"]
 
 [project.urls]
 Homepage = "https://github.com/dofuuz/py-fpng-nb"
