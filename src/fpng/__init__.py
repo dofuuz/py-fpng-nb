@@ -22,6 +22,7 @@ if TYPE_CHECKING:
 import lazy_loader as lazy
 
 from . import fpng_ext
+from ._version import __version__
 
 
 cv2 = lazy.load('cv2')
