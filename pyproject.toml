@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "fpng"
 dynamic = ["version"]
-description = "Very fast .PNG image writer for 24/32bpp images for Python"
+description = "Very fast .PNG image writer for Python"
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
