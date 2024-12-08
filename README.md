@@ -1,6 +1,11 @@
 # py-fpng-nb
 
-Very fast .PNG image writer for Python.
+Very fast .PNG image(24/32bpp) writer for Python.
+
+Compared to typical PNG libraries, its compression is about 10-20x faster, while producing 10-50% larger files.
+
+- Homepage: https://github.com/dofuuz/py-fpng-nb
+- PyPI: https://pypi.org/project/fpng/
 
 py-fpng-nb is a Python wrapper of [fpng](https://github.com/richgel999/fpng)
 
@@ -64,13 +69,13 @@ with open('file_path.png', 'wb') as f:
 
 Comparison with Pillow 11.0.0
 
-### Photo image
+### Compressing photo
 
 ![Photo x86_64](img/bench_photo_amd64.png) | ![Photo x86_64](img/bench_photo_aarch64.png)
 :---: | :---:
 x86_64 | AArch64(ARM64)
 
-### Screenshot image
+### Compressing screenshot
 
 [Screenshot](tests/wikipedia.png) of Wikipedia
 
